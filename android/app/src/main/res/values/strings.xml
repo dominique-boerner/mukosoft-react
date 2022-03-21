@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">mukosoft</string>
+    <string name="title_activity_main">mukosoft</string>
+    <string name="package_name">com.mukosoft.mucomed</string>
+    <string name="custom_url_scheme">com.mukosoft.mucomed</string>
+</resources>

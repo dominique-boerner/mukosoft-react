@@ -2,7 +2,7 @@ import { Box, LinearProgress, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import CommunityService from "../../core/services/community-service/community-service";
 import { MyDocNews } from "../../core/models/my-doc/MyDocNews";
-import NewsCard from "./components/news-card/NewsCard";
+import NewsCard from "./components/NewsCard/NewsCard";
 
 const Home = () => {
   // how many skeleton cards will be rendered, if page is loading
@@ -11,20 +11,23 @@ const Home = () => {
   const [news, setNews] = useState<MyDocNews[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
+  const communityService = CommunityService.getInstance();
+
   useEffect(() => {
-    const mockIds = [
-      "b22c3ba0-99e1-11eb-9c65-64652e69642d",
-      "ca718dfc-c509-11eb-b6b9-64652e69642d",
-      "f8484114-5779-11ec-b3ad-64652e69642d",
-      "00051148-dc2e-11e3-9aea-5b61b214e2c0",
-    ];
-    CommunityService.getInstance()
-      ?.getNews(mockIds)
-      .then((response) => response.json())
-      .then((data: MyDocNews[]) => {
-        setNews(data);
+    communityService?.getFavourites().then((favourites) => {
+      if (favourites.value) {
+        CommunityService.getInstance()
+          ?.getNews(JSON.parse(favourites.value))
+          .then((response: any) => response.json())
+          .then((data: MyDocNews[]) => {
+            setNews(data);
+            setIsLoading(false);
+          });
+      } else {
         setIsLoading(false);
-      });
+        setNews([]);
+      }
+    });
   }, []);
 
   return (
@@ -39,6 +42,7 @@ const Home = () => {
         </Typography>
       </Box>
       <Box px="1rem" py="1rem">
+        {!isLoading && news.length === 0 && <span>Keine News</span>}
         {isLoading &&
           [...Array(SKELETON_NEWS_AMOUNT)].map((v, index) => (
             <NewsCard key={index} isLoading={true} />
@@ -50,7 +54,7 @@ const Home = () => {
             text={news.content}
             createdAt={news.created_at}
             image={news.url_picture}
-            isLoading={isLoading}
+            isLoading={false}
           />
         ))}
       </Box>

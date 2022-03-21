@@ -1,7 +1,7 @@
 import { Box, LinearProgress, TextField, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import CommunityService from "../../core/services/community-service/community-service";
-import CommunityCard from "./components/community-card/CommunityCard";
+import CommunityCard from "./components/CommunityCard/CommunityCard";
 import { MyDocResponse } from "../../core/models/my-doc/MyDocResponse";
 
 const Community = () => {
@@ -34,6 +34,7 @@ const Community = () => {
           return (
             <CommunityCard
               key={community.data.id}
+              id={community.data.uuid}
               name={community.data.company}
               image={community.data._image}
               location={community.data.city}

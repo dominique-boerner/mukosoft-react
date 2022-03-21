@@ -5,6 +5,7 @@
   "dependencies": {
     "@capacitor/cli": "^3.4.3",
     "@capacitor/core": "^3.4.3",
+    "@capacitor/storage": "^1.2.5",
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
     "@mui/icons-material": "^5.5.1",

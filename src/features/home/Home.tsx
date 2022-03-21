@@ -1,8 +1,10 @@
-import { Box, LinearProgress, Typography } from "@mui/material";
+import { Box, Button, LinearProgress, Paper, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import CommunityService from "../../core/services/community-service/community-service";
 import { MyDocNews } from "../../core/models/my-doc/MyDocNews";
 import NewsCard from "./components/NewsCard/NewsCard";
+import { ReactComponent as EmptyIcon } from "./../../assets/icons/favourite.svg";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   // how many skeleton cards will be rendered, if page is loading
@@ -12,6 +14,7 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const communityService = CommunityService.getInstance();
+  const navigate = useNavigate();
 
   useEffect(() => {
     communityService?.getFavourites().then((favourites) => {
@@ -42,7 +45,34 @@ const Home = () => {
         </Typography>
       </Box>
       <Box px="1rem" py="1rem">
-        {!isLoading && news.length === 0 && <span>Keine News</span>}
+        {!isLoading && news.length === 0 && (
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "50vh",
+              textAlign: "center",
+            }}
+          >
+            <EmptyIcon style={{ width: "50%", height: "50%" }} />
+            <Typography variant="h1" sx={{ marginBottom: "1rem" }}>
+              Keine Neuigkeiten
+            </Typography>
+            <Typography variant="h3">
+              Derzeit scheint es keine Neuigkeiten aus deinen Communites zu
+              geben.
+            </Typography>
+            <Button
+              sx={{ marginTop: "1rem" }}
+              onClick={() => navigate("/community")}
+              variant="contained"
+            >
+              Zur Community
+            </Button>
+          </Box>
+        )}
         {isLoading &&
           [...Array(SKELETON_NEWS_AMOUNT)].map((v, index) => (
             <NewsCard key={index} isLoading={true} />

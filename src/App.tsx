@@ -33,6 +33,19 @@ const themeOptions: ThemeOptions = {
     },
   },
   components: {
+    MuiTypography: {
+      styleOverrides: {
+        h1: {
+          lineHeight: "1.2",
+        },
+        h2: {
+          lineHeight: "1.2",
+        },
+        h3: {
+          lineHeight: "1.4",
+        },
+      },
+    },
     MuiAppBar: {
       styleOverrides: {
         colorInherit: {

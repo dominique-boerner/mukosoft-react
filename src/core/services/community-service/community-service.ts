@@ -39,7 +39,6 @@ export default class CommunityService {
     const favourites = await this.getFavourites();
 
     if (favourites.value) {
-      console.log(favourites.value);
       return JSON.parse(favourites.value).includes(id);
     } else {
       return false;

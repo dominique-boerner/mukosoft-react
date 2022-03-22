@@ -18,7 +18,7 @@ const CommunityCard = ({ id, name, image, location }: any) => {
 
   useEffect(() => {
     communityService?.isFavourite(id).then((result) => setIsFavourite(result));
-  }, []);
+  }, [communityService, id]);
 
   return (
     <Box mb="1rem">

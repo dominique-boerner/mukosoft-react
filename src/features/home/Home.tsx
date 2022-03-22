@@ -1,4 +1,4 @@
-import { Box, Button, LinearProgress, Paper, Typography } from "@mui/material";
+import { Box, Button, LinearProgress, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import CommunityService from "../../core/services/community-service/community-service";
 import { MyDocNews } from "../../core/models/my-doc/MyDocNews";
@@ -31,7 +31,7 @@ const Home = () => {
         setNews([]);
       }
     });
-  }, []);
+  }, [communityService]);
 
   return (
     <Box py={"3.5rem"}>

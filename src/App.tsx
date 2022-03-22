@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom";
 import Home from "./features/home/Home";
 import {
@@ -78,6 +78,7 @@ const themeOptions: ThemeOptions = {
 const theme = createTheme(themeOptions);
 
 function App() {
+  const [navIndex, setNavIndex] = useState(0);
   return (
     <ThemeProvider theme={theme}>
       <Router>
@@ -103,7 +104,12 @@ function App() {
           sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
           elevation={3}
         >
-          <BottomNavigation>
+          <BottomNavigation
+            value={navIndex}
+            onChange={(event, newValue) => {
+              setNavIndex(newValue);
+            }}
+          >
             <BottomNavigationAction
               label="Home"
               icon={<HomeIcon className="bottom-navigation-action-icon" />}

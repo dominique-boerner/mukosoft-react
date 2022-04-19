@@ -1,4 +1,6 @@
+$bottomNavigationActionIconSize: 1.4rem;
+
 .bottom-navigation-action-icon {
-  width: 2rem;
-  height: 2rem;
+  width: $bottomNavigationActionIconSize;
+  height: $bottomNavigationActionIconSize;
 }

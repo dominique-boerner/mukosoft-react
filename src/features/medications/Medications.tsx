@@ -1,7 +1,6 @@
 import { Box, Button, MobileStepper, TextField } from "@mui/material";
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
-import SimpleReactValidator from "simple-react-validator";
 import { Autocomplete } from "@mui/lab";
 
 const Medications = () => {

@@ -50,6 +50,7 @@ const Router = () => {
         >
           {RouteUtil.getBottomNavigationActions().map((action, index) => (
             <BottomNavigationAction
+              data-testid="action-button"
               key={`actionButton_${index}`}
               icon={action.icon}
               component={Link}

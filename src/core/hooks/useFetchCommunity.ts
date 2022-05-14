@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import CommunityService from "../services/community-service/community-service";
 import { ApiCallback } from "../models/ApiCallback";
+import { MyDocResponse } from "../models/my-doc/MyDocResponse";
 
 export function useFetchCommunity() {
-  // TODO: implement community interface here
-  const [community, setCommunity] = useState<ApiCallback<any[]>>({
+  const [community, setCommunity] = useState<ApiCallback<MyDocResponse[]>>({
     error: false,
     loading: true,
     data: [],

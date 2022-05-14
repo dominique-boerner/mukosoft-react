@@ -20,13 +20,14 @@ const Community = () => {
         </Typography>
         <TextField id="search-community" label="Name" variant="outlined" />
         {community.data.map((community: MyDocResponse) => {
+          const communityData = community.data;
           return (
             <CommunityCard
-              key={community.data.id}
-              id={community.data.uuid}
-              name={community.data.company}
-              image={community.data._image}
-              location={community.data.city}
+              key={communityData.id}
+              id={communityData.uuid}
+              name={communityData.company}
+              image={communityData._image}
+              location={communityData.city}
             />
           );
         })}

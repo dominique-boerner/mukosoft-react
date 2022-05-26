@@ -1,10 +1,10 @@
 import { Box, LinearProgress, TextField, Typography } from "@mui/material";
-import React from "react";
+import React, { FunctionComponent } from "react";
 import CommunityCard from "./components/CommunityCard/CommunityCard";
-import { MyDocResponse } from "../../core/models/my-doc/MyDocResponse";
-import { useFetchCommunity } from "../../core/hooks/useFetchCommunity";
+import { MyDocResponse } from "@models/my-doc/MyDocResponse";
+import { useFetchCommunity } from "./../../common/hooks/use-fetch-community/useFetchCommunity";
 
-const Community = () => {
+const Community: FunctionComponent = () => {
   const community = useFetchCommunity();
 
   return (
@@ -28,6 +28,8 @@ const Community = () => {
               name={communityData.company}
               image={communityData._image}
               location={communityData.city}
+              isFavourite={true}
+              onFavouriteClick={() => {}}
             />
           );
         })}

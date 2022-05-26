@@ -1,7 +1,7 @@
 import { Box, Button, LinearProgress, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import CommunityService from "../../core/services/community-service/community-service";
-import { MyDocNews } from "../../core/models/my-doc/MyDocNews";
+import CommunityService from "../../common/services/community-service/community-service";
+import { MyDocNews } from "@models/my-doc/MyDocNews";
 import NewsCard from "./components/NewsCard/NewsCard";
 import { ReactComponent as EmptyIcon } from "./../../assets/icons/favourite.svg";
 import { useNavigate } from "react-router-dom";

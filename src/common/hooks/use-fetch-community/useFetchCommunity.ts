@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import CommunityService from "../services/community-service/community-service";
-import { ApiCallback } from "../models/ApiCallback";
-import { MyDocResponse } from "../models/my-doc/MyDocResponse";
+import CommunityService from "./../../services/community-service/community-service";
+import { ApiCallback } from "@models/ApiCallback";
+import { MyDocResponse } from "@models/my-doc/MyDocResponse";
 
 export function useFetchCommunity() {
   const [community, setCommunity] = useState<ApiCallback<MyDocResponse[]>>({

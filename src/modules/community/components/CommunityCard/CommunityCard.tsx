@@ -1,3 +1,4 @@
+import { FunctionComponent } from "react";
 import {
   Box,
   Card,
@@ -8,17 +9,31 @@ import {
   Typography,
 } from "@mui/material";
 import { ChevronRight, Favorite, FavoriteBorder } from "@mui/icons-material";
-import CommunityService from "../../../../core/services/community-service/community-service";
-import { useEffect, useState } from "react";
 
-const CommunityCard = ({ id, name, image, location }: any) => {
-  const [isFavourite, setIsFavourite] = useState(false);
+interface CommunityCardProps {
+  id: string;
+  name: string;
+  image: string;
+  location: string;
+  isFavourite: boolean;
+  onFavouriteClick: () => void;
+}
 
-  const communityService = CommunityService.getInstance();
+const CommunityCard: FunctionComponent<CommunityCardProps> = ({
+  id,
+  name,
+  image,
+  location,
+  isFavourite,
+  onFavouriteClick,
+}) => {
+  // const [isFavourite, setIsFavourite] = useState(false);
 
-  useEffect(() => {
-    communityService?.isFavourite(id).then((result) => setIsFavourite(result));
-  }, [communityService, id]);
+  // const communityService = CommunityService.getInstance();
+
+  // useEffect(() => {
+  //   communityService?.isFavourite(id).then((result) => setIsFavourite(result));
+  // }, [communityService, id]);
 
   return (
     <Box mb="1rem">
@@ -36,8 +51,7 @@ const CommunityCard = ({ id, name, image, location }: any) => {
           {isFavourite ? (
             <IconButton
               onClick={() => {
-                setIsFavourite(false);
-                communityService?.removeFromFavourite(id);
+                onFavouriteClick();
               }}
             >
               <Favorite />
@@ -45,8 +59,7 @@ const CommunityCard = ({ id, name, image, location }: any) => {
           ) : (
             <IconButton
               onClick={() => {
-                setIsFavourite(true);
-                communityService?.addToFavourite(id);
+                onFavouriteClick();
               }}
             >
               <FavoriteBorder />
